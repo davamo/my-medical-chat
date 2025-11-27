@@ -1,66 +1,134 @@
-Frontend – Chatbot Agendamiento Médico
+# Medical Chat - Chatbot de Agendamiento Médico
 
-Aplicación web mobile-first﻿desarrollado en React para interactuar con un chatbot de agendamiento médico, con login básico e integración a un backend con API CRUD de citas médicas﻿.
+Aplicación web desarrollada en **React** para interactuar con un chatbot inteligente de agendamiento de citas médicas. Incluye autenticación básica y comunicación en tiempo real con un backend API.
 
-Tecnologías utilizadas﻿ React (Vite como paquete)﻿
+## 🎯 Características Principales
 
-JavaScript (ES6+)
+- ✅ **Autenticación de usuario** - Login seguro con validación
+- 💬 **Chat interactivo** - Interfaz conversacional con el asistente médico
+- �� **Agendamiento de citas** - Integración CRUD con backend
+- 📱 **Diseño mobile-first** - Totalmente responsivo y optimizado para dispositivos móviles
+- 🤖 **Asistente con OpenAI** - Potenciado por inteligencia artificial
 
-CSS simple , primero para dispositivos móviles﻿
+## 🛠️ Tecnologías Utilizadas
 
-Obtener API para llamadas HTTP al backend
+- **React 19** - Framework UI
+- **Vite** - Build tool y servidor de desarrollo
+- **JavaScript ES6+** - Lenguaje de programación
+- **CSS3** - Estilos y responsive design
+- **Axios** - Cliente HTTP para llamadas a API
 
-Estructura del proyecto﻿ intento /frontend ├── src │ ├── components │ │ ├── LoginForm.jsx │ │ ├── ChatWindow.jsx │ │ └── MessageBubble.jsx │ ├── services │ │ └── api.js │ ├── App.jsx │ ├── main.jsx (o index.jsx según Vite/plantilla) │ └── styles.css ├── index.html ├── package.json └── README.md Requisitos previos
+## 📂 Estructura del Proyecto
 
-Node.js 22
+\`\`\`
+my-medical-chat/
+├── src/
+│   ├── components/
+│   │   ├── LoginForm.jsx          # Formulario de autenticación
+│   │   ├── ChatWindow.jsx         # Ventana principal del chat
+│   │   ├── ChatWin.jsx            # Componente alternativo de chat
+│   │   └── MessageBubble.jsx      # Componente de burbujas de mensaje
+│   ├── services/
+│   │   └── api.js                 # Configuración de llamadas HTTP
+│   ├── App.jsx                    # Componente raíz
+│   ├── main.jsx                   # Punto de entrada
+│   ├── styles.css                 # Estilos globales
+│   ├── App.css                    # Estilos de App
+│   └── index.css                  # Estilos de índice
+├── public/                        # Archivos estáticos
+├── index.html                     # HTML principal
+├── package.json                   # Dependencias y scripts
+├── vite.config.js                 # Configuración de Vite
+├── eslint.config.js               # Configuración de ESLint
+└── README.md                      # Este archivo
+\`\`\`
 
-npm 
+## 📋 Requisitos Previos
 
-Backend de la prueba en ejecución (por defecto en http://localhost:4000/api)
+- **Node.js** >= 16
+- **npm** >= 8
+- **Backend** en ejecución (por defecto en \`http://localhost:4000/api\`)
 
-Instalación y ejecución intento
+## 🚀 Instalación y Ejecución
 
-Clonar repositorio
-git clone <URL_DE_TU_REPOSITORIO_FRONTEND> cd frontend
+### 1. Clonar el repositorio
+\`\`\`bash
+git clone https://github.com/davamo/my-medical-chat.git
+cd my-medical-chat
+\`\`\`
 
-Instalar dependencias
+### 2. Instalar dependencias
+\`\`\`bash
 npm install
+\`\`\`
 
-Ejecutar en modo desarrollo
+### 3. Ejecutar en modo desarrollo
+\`\`\`bash
 npm run dev
+\`\`\`
 
-La aplicación se abrirá en el puerto que indique Vite (por defecto 5173)
-http://localhost:5173
+La aplicación se abrirá en \`http://localhost:5173\`
 
-Configuración
-El archivo src/services/api.jsapunta por defecto a:
+## ⚙️ Configuración
 
-http://localhost:4000/api
+El archivo \`src/services/api.js\` contiene la configuración de la API:
 
-Si el backend corre en otra URL o puerto, actualice la constante API_URLen api.js.
+\`\`\`javascript
+const API_BASE_URL = 'http://localhost:4000/api';
+\`\`\`
 
-Funcionalidades principales Inicio de sesión básico:
+Si el backend corre en otra URL o puerto, actualiza esta constante en \`api.js\`.
 
-Formulario con usuario y contraseña (autenticación simulada en frontend).
+## 📝 Scripts Disponibles
 
-Chat de agendamiento:
+\`\`\`bash
+npm run dev       # Inicia el servidor de desarrollo con HMR
+npm run build     # Genera la versión optimizada de producción
+npm run lint      # Ejecuta ESLint para verificar la calidad del código
+npm run preview   # Previsualiza la construcción de producción
+\`\`\`
 
-Envío y recepción de mensajes.
+## 🔌 Endpoints de API
 
-Mensajes del usuario y del bot diferenciados visualmente.
+El frontend consume los siguientes endpoints del backend:
 
-Gestión de citas:
+- \`POST /auth/login\` - Autenticación de usuario
+- \`GET /appointments\` - Listar citas
+- \`POST /appointments\` - Crear nueva cita
+- \`PUT /appointments/:id\` - Actualizar cita
+- \`DELETE /appointments/:id\` - Eliminar cita
+- \`POST /chat\` - Enviar mensaje al chatbot
 
-Consumo de endpoints CRUD del backend para crear, listar, actualizar y eliminar  citas médicas (según implementación en ChatWindow.jsxy api.js).
+## 📱 Flujo de la Aplicación
 
-Scripts disponibles En el directorio del proyecto:
+1. Usuario ingresa sus credenciales en \`LoginForm\`
+2. Se valida la autenticación contra el backend
+3. Si es exitoso, se accede a \`ChatWindow\`
+4. El usuario puede enviar mensajes al chatbot
+5. El asistente responde con sugerencias de agendamiento
+6. Las citas se gestionan mediante llamadas API
 
-npm run dev– Inicia el servidor de desarrollo.
+## 🔒 Autenticación
 
-npm run build– Genera la versión de producción.
+La autenticación se maneja en el componente \`LoginForm\` y se valida contra el backend. Una vez autenticado, se recibe un \`sessionId\` que se utiliza para las posteriores llamadas a la API.
 
-npm run preview– Previsualiza la construcción de producción.
+## 📦 Dependencias Principales
 
-Notas Este frontend está diseñado para la prueba técnica de desarrollador full-stack con foco en simplicidad y diseño mobile-first.
+- \`react\` - Librería UI
+- \`react-dom\` - Renderizado en DOM
 
-La lógica avanzada del chatbot (herramienta de llamadas con OpenAI y reglas de negocio de agendamiento) se maneja en el backend, al cual el frontend consume mediante src/services/api.js
+## 🛡️ Code Quality
+
+Se utiliza **ESLint** para mantener la calidad del código. Ejecuta:
+
+\`\`\`bash
+npm run lint
+\`\`\`
+
+## 📄 Licencia
+
+Este proyecto es de código abierto y está disponible bajo licencia MIT.
+
+## 👤 Autor
+
+**davamo** - [GitHub](https://github.com/davamo)
